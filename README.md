@@ -16,7 +16,7 @@ A full-stack password hashing and verification tool built with Node.js, Express,
 
 ---
 
-## 🚀 Getting Started
+## 🚀 How to Getting Started
 
 ### 1️⃣ Clone the Repository
 
