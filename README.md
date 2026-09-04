@@ -1,18 +1,12 @@
 # 🔐 Password Hasher & Verifier
-
 A full-stack password hashing and verification tool built with Node.js, Express, and bcryptjs. Designed to generate secure bcrypt hashes and perform accurate verification matches.
-
 ---
-
 ## ✨ Features
-
 - ✅ **Password Hashing** - Encrypts plain passwords using industry-standard bcrypt algorithm (Salt Rounds = 10)
 - ✅ **Password Verification** - Accurately verifies if a plain password matches a given bcrypt hash
 - ✅ **Input Sanitization** - Automatically trims leading and trailing whitespace to prevent verification errors caused by accidental spaces
 - ✅ **User-Friendly UI** - Includes a one-click copy feature that automatically fills the hash into the verification box
-
 ---
-
 ## 🛠️ Tech Stack
 
 | Category | Technology |
