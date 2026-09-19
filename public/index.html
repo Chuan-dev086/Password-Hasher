@@ -4,71 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Password Hash Generator & Verifier</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        max-width: 500px;
-        margin: 40px auto;
-        padding: 20px;
-        color: #333;
-      }
-      .card {
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        padding: 20px;
-        margin-bottom: 20px;
-        background: #fff;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-      }
-      h2 {
-        margin-top: 0;
-        font-size: 20px;
-      }
-      input {
-        width: 100%;
-        padding: 10px;
-        margin-top: 8px;
-        margin-bottom: 12px;
-        box-sizing: border-box;
-        border-radius: 6px;
-        border: 1px solid #ccc;
-        font-size: 14px;
-      }
-      button {
-        width: 100%;
-        padding: 12px;
-        background-color: #4f46e5;
-        color: white;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        font-size: 15px;
-        font-weight: bold;
-      }
-      button:hover {
-        background-color: #4338ca;
-      }
-      .copy-btn {
-        width: auto;
-        padding: 6px 12px;
-        margin-top: 8px;
-        background-color: #10b981;
-        font-size: 12px;
-      }
-      .copy-btn:hover {
-        background-color: #059669;
-      }
-      .result-box {
-        background-color: #f8fafc;
-        padding: 12px;
-        margin-top: 12px;
-        word-break: break-all;
-        border-radius: 6px;
-        border: 1px solid #e2e8f0;
-        min-height: 20px;
-        font-size: 14px;
-      }
-    </style>
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
     <div class="card">
@@ -101,70 +37,6 @@
       </div>
     </div>
 
-    <script>
-      async function handleHash() {
-        const password = document.getElementById("passwordInput").value;
-        if (!password) {
-          alert("Please enter a password");
-          return;
-        }
-        try {
-          const response = await fetch("/api/hash", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ password }),
-          });
-          const data = await response.json();
-          document.getElementById("hashResult").innerText =
-            data.hashedPassword || data.error;
-        } catch (err) {
-          document.getElementById("hashResult").innerText = "Network error";
-        }
-      }
-
-      async function copyHash() {
-        const hashText = document.getElementById("hashResult").innerText.trim();
-        if (
-          !hashText ||
-          hashText.includes("appear here") ||
-          hashText.includes("error")
-        ) {
-          alert("Nothing to copy!");
-          return;
-        }
-        await navigator.clipboard.writeText(hashText);
-        document.getElementById("verifyHashInput").value = hashText;
-        alert("Copied to clipboard and auto-filled into verification box!");
-      }
-
-      async function handleVerify() {
-        const password = document
-          .getElementById("verifyPasswordInput")
-          .value.trim();
-        const hash = document.getElementById("verifyHashInput").value.trim();
-        if (!password || !hash) {
-          alert("Please enter both password and hash");
-          return;
-        }
-        try {
-          const response = await fetch("/api/verify", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ password, hash }),
-          });
-          const data = await response.json();
-          if (data.isMatch !== undefined) {
-            document.getElementById("verifyResult").innerText = data.isMatch
-              ? "Match! (Password is correct)"
-              : "No match! (Password is wrong)";
-          } else {
-            document.getElementById("verifyResult").innerText =
-              data.error || "Verification failed";
-          }
-        } catch (err) {
-          document.getElementById("verifyResult").innerText = "Network error";
-        }
-      }
-    </script>
+    <script src="./script.js"></script>
   </body>
 </html>
