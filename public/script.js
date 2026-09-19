@@ -25,6 +25,21 @@ const resetVerifyResult = () => {
 verifyPasswordInput.addEventListener("input", resetVerifyResult);
 verifyHashInput.addEventListener("input", resetVerifyResult);
 
+function generateStrongPassword() {
+  const length = 16;
+  const chars =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+  let securePassword = "";
+
+  for (let i = 0; i < 16; i++) {
+    const randomIndex = Math.floor(Math.random() * chars.length);
+    securePassword += chars[randomIndex];
+  }
+  document.getElementById("passwordInput").value = securePassword;
+  document.getElementById("hashResult").innerText =
+    "Hash result will appear here";
+}
+
 // function that generate hash
 async function handleHash() {
   const password = passwordInput.value;
@@ -59,7 +74,6 @@ async function copyHash() {
   }
   await navigator.clipboard.writeText(hashText);
   verifyHashInput.value = hashText;
-  // 自动填入新哈希后，也顺便把上一次残留的验证结果清空
   resetVerifyResult();
   alert("Copied to clipboard and auto-filled into verification box!");
 }

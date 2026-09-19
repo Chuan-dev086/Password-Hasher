@@ -61,3 +61,12 @@ button:hover {
   min-height: 20px;
   font-size: 14px;
 }
+
+.btn-pwd {
+  background-color: #0284c7;
+  margin-bottom: 12px;
+}
+
+.btn-pwd:hover{ 
+    background-color: darkblue;
+}
