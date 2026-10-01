@@ -79,3 +79,7 @@ Password-Hasher/
 - [bcryptjs Documentation](https://github.com/dcodeIO/bcrypt.js)
 - [Express.js Official Website](https://expressjs.com/)
 - [Node.js Official Website](https://nodejs.org/)
+
+---
+
+Author:Chuan-dev086 :)
